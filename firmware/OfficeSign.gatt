@@ -1,0 +1,12 @@
+PRIMARY_SERVICE, GAP_SERVICE
+CHARACTERISTIC, GAP_DEVICE_NAME, READ, "OfficeSign"
+
+PRIMARY_SERVICE, GATT_SERVICE
+CHARACTERISTIC, GATT_DATABASE_HASH, READ,
+
+// OfficeSign control service -- private 128-bit UUID, not a standard profile.
+// One write characteristic carries every message type (see SignMessage.h for
+// the wire format); dispatch is by a leading type byte, so a single
+// characteristic is all that's needed.
+PRIMARY_SERVICE, 20B1C720-1391-4410-9F7F-7ECE217F621C
+CHARACTERISTIC, D353EE31-9EAB-4FA5-BFF2-258667F6D295, WRITE | DYNAMIC,

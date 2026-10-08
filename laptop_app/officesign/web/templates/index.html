@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>OfficeSign</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <h1>OfficeSign</h1>
+
+  <section id="status">
+    <span id="connection-indicator">checking...</span>
+    <span id="weather-indicator"></span>
+  </section>
+
+  <section>
+    <label for="message-type">Message</label>
+    <select id="message-type">
+      <option value="clock-mode">Clock Mode</option>
+      <option value="meeting-mode">Meeting Mode</option>
+      <option value="weather">Weather</option>
+      <option value="vibe-mode">Vibe Mode</option>
+      <option value="go-dark">Go Dark</option>
+      <option value="set-time">Set Time</option>
+    </select>
+
+    <form id="clock-mode-form" class="message-form">
+      <label><input type="checkbox" name="show_weather" checked /> Show weather</label>
+      <button type="submit">Send Clock Mode</button>
+    </form>
+
+    <form id="meeting-mode-form" class="message-form" hidden>
+      <button type="button" id="use-next-meeting">Use next calendar meeting</button>
+      <label>Duration (minutes) <input type="number" name="duration_minutes" value="30" min="1" /></label>
+      <label>Participant <input type="text" name="participant_name" maxlength="14" /></label>
+      <label>Their timezone offset from yours (minutes) <input type="number" name="tz_offset_minutes" value="0" /></label>
+      <label>
+        Style
+        <select name="style">
+          <option value="0">Serious</option>
+          <option value="1">Fun</option>
+        </select>
+      </label>
+      <button type="submit">Send Meeting Mode</button>
+    </form>
+
+    <form id="weather-form" class="message-form" hidden>
+      <label>
+        Condition
+        <select name="condition">
+          <option value="0">Sunny</option>
+          <option value="1">Cloudy</option>
+          <option value="2">Partly Cloudy</option>
+          <option value="3">Rain</option>
+          <option value="4">Snow</option>
+        </select>
+      </label>
+      <label>Current (F) <input type="number" name="current_f" value="70" /></label>
+      <label>High (F) <input type="number" name="high_f" value="75" /></label>
+      <label>Low (F) <input type="number" name="low_f" value="60" /></label>
+      <button type="submit">Send Weather</button>
+    </form>
+
+    <form id="vibe-mode-form" class="message-form" hidden>
+      <button type="submit">Send Vibe Mode</button>
+    </form>
+
+    <form id="go-dark-form" class="message-form" hidden>
+      <button type="submit">Send Go Dark</button>
+    </form>
+
+    <form id="set-time-form" class="message-form" hidden>
+      <button type="submit">Send Set Time</button>
+    </form>
+  </section>
+
+  <p id="result"></p>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

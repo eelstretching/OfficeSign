@@ -1,0 +1,9 @@
+# Pi Pico
+build/
+
+# Python (laptop_app)
+**/__pycache__/
+*.pyc
+laptop_app/.venv/
+
+.DS_Store
